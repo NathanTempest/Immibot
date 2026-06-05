@@ -47,7 +47,7 @@ async def get_chat_response(message: str, history: list = None):
     # In a real app, we'd manage history.
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-flash-latest",
             config=types.GenerateContentConfig(
                 system_instruction=SYSTEM_INSTRUCTION,
             ),
