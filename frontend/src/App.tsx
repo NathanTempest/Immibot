@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
+        <div className="bg-glow"></div>
         <nav>
           <div className="logo">ImmiBot</div>
           <div className="nav-links">
