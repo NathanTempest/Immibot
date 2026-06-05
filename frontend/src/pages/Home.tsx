@@ -9,8 +9,10 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="home-page"
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
+      <div className="home-bg"></div>
+      
       {/* High Visibility Background Image */}
       <img 
         src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
@@ -18,19 +20,19 @@ const Home = () => {
         alt="Legal Background"
       />
 
-      <section className="hero">
+      <section className="hero" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
           style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}
         >
-          <div style={{ padding: '1.5rem', background: 'rgba(59, 130, 246, 0.2)', borderRadius: '50%', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+          <div style={{ padding: '1.5rem', background: 'rgba(59, 130, 246, 0.25)', borderRadius: '50%', border: '1px solid rgba(59, 130, 246, 0.4)', backdropFilter: 'blur(10px)' }}>
             <Globe size={48} color="var(--primary)" />
           </div>
         </motion.div>
-        <h1 style={{ textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>Navigate US Immigration <br/><span>with Confidence</span></h1>
-        <p style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+        <h1 style={{ textShadow: '0 0 40px rgba(0,0,0,0.8), 0 0 100px rgba(59, 130, 246, 0.3)' }}>Navigate US Immigration <br/><span>with Confidence</span></h1>
+        <p style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)', color: 'white', maxWidth: '700px', margin: '0 auto 2.5rem' }}>
           Expert AI-driven support for F1, OPT, H1B, and Visa transfers. 
           Seamlessly bridging the gap between complexity and clarity.
         </p>
