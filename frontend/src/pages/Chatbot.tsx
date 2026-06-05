@@ -8,7 +8,7 @@ interface Message {
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { text: "Welcome to ImmiBot. I am your specialized immigration assistant. How may I assist you with your F1, OPT, H1B, or Visa Transfer inquiries today?", isUser: false }
+    { text: "Hello. I am ImmiBot, your specialized immigration consultant. How can I assist you today?", isUser: false }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -37,42 +37,38 @@ const Chatbot = () => {
       const data = await response.json();
       setMessages(prev => [...prev, { text: data.response, isUser: false }]);
     } catch (error) {
-      setMessages(prev => [...prev, { text: "System Error: Unable to establish a secure connection to the legal database. Please try again later.", isUser: false }]);
+      setMessages(prev => [...prev, { text: "Connection error. Please ensure the backend server is operational.", isUser: false }]);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="chat-container">
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>ImmiBot <span>Legal Assistant</span></h1>
-        <p style={{ color: 'var(--text-light)' }}>Secure, AI-powered immigration guidance.</p>
-      </div>
+    <div className="chat-wrapper">
+      <header style={{ marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>ImmiBot <span>Consultant</span></h1>
+        <p style={{ color: 'var(--text-dim)' }}>Specialized AI for US Immigration Law.</p>
+      </header>
 
-      <div className="chat-window">
-        <div className="messages">
+      <div className="chat-box">
+        <div className="chat-messages">
           {messages.map((msg, index) => (
-            <div key={index} className={`message ${msg.isUser ? 'user-message' : 'bot-message'}`}>
-              {msg.isUser ? (
-                msg.text
-              ) : (
-                <ReactMarkdown>{msg.text}</ReactMarkdown>
-              )}
+            <div key={index} className={`msg ${msg.isUser ? 'user' : 'bot'}`}>
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
             </div>
           ))}
-          {isLoading && <div className="message bot-message">Consulting database...</div>}
+          {isLoading && <div className="msg bot">Processing...</div>}
           <div ref={messagesEndRef} />
         </div>
-        <div className="chat-input-area">
+        <div className="chat-footer">
           <input 
             type="text" 
             value={input} 
             onChange={(e) => setInput(e.target.value)} 
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-            placeholder="Type your immigration inquiry here..."
+            placeholder="Ask about F1, OPT, H1B..."
           />
-          <button className="btn" onClick={handleSend} disabled={isLoading}>Send Inquiry</button>
+          <button className="btn" onClick={handleSend} disabled={isLoading}>Send</button>
         </div>
       </div>
     </div>

@@ -3,41 +3,38 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="home-page">
-      <div className="bento-grid">
-        <div className="bento-item item-large">
-          <h1>Experience Seamless <br/><span>Immigration Support</span></h1>
-          <p className="mission-statement">
-            "To provide seamless, expert immigration support for students and professionals navigating F1, OPT, H1B, EAD, and visa transfer processes, empowering their journey with clarity and confidence."
-          </p>
-        </div>
-        
-        <div className="bento-item">
-          <h2>F1 & OPT</h2>
-          <p style={{ color: 'var(--text-light)' }}>Specialized guidance for international students and recent graduates.</p>
-        </div>
+    <div className="home-container">
+      <section className="hero">
+        <h1>Navigate US Immigration with Confidence</h1>
+        <p>
+          Expert AI-driven support for F1, OPT, H1B, and Visa transfers. 
+          Seamlessly bridging the gap between complexity and clarity.
+        </p>
+        <Link to="/chat" className="btn">Start Consultation</Link>
+      </section>
 
-        <div className="bento-item">
-          <h2>H1B & EAD</h2>
-          <p style={{ color: 'var(--text-light)' }}>Expert assistance for working professionals and employment authorization.</p>
+      <div className="features">
+        <div className="feature-card">
+          <h3>Student Visas</h3>
+          <p>Complete guidance for F1 and OPT processes, ensuring you stay compliant and focused on your studies.</p>
         </div>
-
-        <div className="bento-item item-wide">
-          <h2>Ready to get started?</h2>
-          <p>Our AI-powered assistant is trained specifically on USCIS regulations and company protocols.</p>
-          <Link to="/chat" className="btn" style={{ width: 'fit-content' }}>Consult ImmiBot</Link>
+        <div className="feature-card">
+          <h3>Work Authorization</h3>
+          <p>Expert assistance for H1B and EAD applications, tailored for working professionals.</p>
         </div>
-
-        <div className="bento-item">
-          <h2>Visa Transfers</h2>
-          <p style={{ color: 'var(--text-light)' }}>Seamless coordination for status changes and employer transfers.</p>
-        </div>
-
-        <div className="bento-item">
-          <h2>Status Tracking</h2>
-          <p style={{ color: 'var(--text-light)' }}>Real-time help with documentation and critical deadlines.</p>
+        <div className="feature-card">
+          <h3>Visa Transfers</h3>
+          <p>Smooth transitions between employers or status changes with coordinated legal oversight.</p>
         </div>
       </div>
+
+      <section style={{ textAlign: 'center', marginTop: '4rem' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Our Mission</h2>
+        <p style={{ color: 'var(--text-dim)', maxWidth: '600px', margin: '0 auto', fontStyle: 'italic' }}>
+          "To provide seamless, expert immigration support for students and professionals, 
+          empowering their journey with clarity and confidence."
+        </p>
+      </section>
     </div>
   );
 };
