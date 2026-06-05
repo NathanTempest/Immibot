@@ -11,21 +11,12 @@ const Home = () => {
       className="home-page"
       style={{ position: 'relative' }}
     >
-      <div className="home-bg"></div>
-      
-      {/* Background Decorative Image */}
-      <div style={{
-        position: 'absolute',
-        top: '100px',
-        right: '-100px',
-        width: '600px',
-        height: '600px',
-        background: 'url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop") center/cover',
-        borderRadius: '50%',
-        opacity: 0.1,
-        filter: 'grayscale(100%)',
-        zIndex: -1
-      }}></div>
+      {/* High Visibility Background Image */}
+      <img 
+        src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+        className="page-bg-image" 
+        alt="Legal Background"
+      />
 
       <section className="hero">
         <motion.div
@@ -34,12 +25,12 @@ const Home = () => {
           transition={{ duration: 0.5 }}
           style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}
         >
-          <div style={{ padding: '1.5rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '50%' }}>
+          <div style={{ padding: '1.5rem', background: 'rgba(59, 130, 246, 0.2)', borderRadius: '50%', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
             <Globe size={48} color="var(--primary)" />
           </div>
         </motion.div>
-        <h1>Navigate US Immigration <br/><span>with Confidence</span></h1>
-        <p>
+        <h1 style={{ textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>Navigate US Immigration <br/><span>with Confidence</span></h1>
+        <p style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
           Expert AI-driven support for F1, OPT, H1B, and Visa transfers. 
           Seamlessly bridging the gap between complexity and clarity.
         </p>
@@ -51,8 +42,9 @@ const Home = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          whileHover={{ y: -10, borderColor: 'var(--primary)' }} 
+          whileHover={{ y: -10, borderColor: 'var(--primary)', backgroundColor: 'rgba(17, 17, 20, 0.9)' }} 
           className="feature-card"
+          style={{ backdropFilter: 'blur(10px)' }}
         >
           <GraduationCap size={32} color="var(--primary)" style={{ marginBottom: '1rem' }} />
           <h3>Student Visas</h3>
@@ -62,8 +54,9 @@ const Home = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          whileHover={{ y: -10, borderColor: 'var(--primary)' }} 
+          whileHover={{ y: -10, borderColor: 'var(--primary)', backgroundColor: 'rgba(17, 17, 20, 0.9)' }} 
           className="feature-card"
+          style={{ backdropFilter: 'blur(10px)' }}
         >
           <Briefcase size={32} color="var(--primary)" style={{ marginBottom: '1rem' }} />
           <h3>Work Authorization</h3>
@@ -73,8 +66,9 @@ const Home = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          whileHover={{ y: -10, borderColor: 'var(--primary)' }} 
+          whileHover={{ y: -10, borderColor: 'var(--primary)', backgroundColor: 'rgba(17, 17, 20, 0.9)' }} 
           className="feature-card"
+          style={{ backdropFilter: 'blur(10px)' }}
         >
           <ShieldCheck size={32} color="var(--primary)" style={{ marginBottom: '1rem' }} />
           <h3>Visa Transfers</h3>
@@ -90,23 +84,14 @@ const Home = () => {
           textAlign: 'center', 
           marginTop: '6rem', 
           padding: '4rem', 
-          background: 'var(--bg-card)', 
+          background: 'rgba(17, 17, 20, 0.8)', 
           borderRadius: 'var(--radius)', 
           border: '1px solid var(--border)',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          backdropFilter: 'blur(5px)'
         }}
       >
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop") center/cover',
-          opacity: 0.03,
-          zIndex: 0
-        }}></div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Our Mission</h2>
           <p style={{ color: 'var(--text-dim)', maxWidth: '600px', margin: '0 auto', fontStyle: 'italic', fontSize: '1.1rem' }}>

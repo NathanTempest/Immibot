@@ -52,6 +52,13 @@ const Chatbot = () => {
       className="chat-wrapper"
       style={{ position: 'relative' }}
     >
+      <img 
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" 
+        className="page-bg-image" 
+        alt="Tech Background"
+        style={{ opacity: 0.08 }}
+      />
+
       {/* AI Pulse Background Animation */}
       <motion.div
         animate={{ 
@@ -86,7 +93,7 @@ const Chatbot = () => {
         </motion.div>
       </header>
 
-      <div className="chat-box" style={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(20, 20, 23, 0.9)' }}>
+      <div className="chat-box" style={{ backdropFilter: 'blur(20px)', backgroundColor: 'rgba(20, 20, 23, 0.8)' }}>
         <div className="chat-messages">
           <AnimatePresence>
             {messages.map((msg, index) => (

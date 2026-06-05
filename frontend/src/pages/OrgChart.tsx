@@ -32,19 +32,14 @@ const item = {
 const OrgChart = () => {
   return (
     <div className="org-page" style={{ position: 'relative' }}>
+      <img 
+        src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+        className="page-bg-image" 
+        alt="Office Background"
+        style={{ opacity: 0.1 }}
+      />
       <div className="grid-pattern"></div>
       
-      {/* Abstract Corporate Background */}
-      <div style={{
-        position: 'absolute',
-        bottom: '0',
-        left: '0',
-        width: '100%',
-        height: '400px',
-        background: 'linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent)',
-        zIndex: -1
-      }}></div>
-
       <motion.header 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -65,8 +60,9 @@ const OrgChart = () => {
           <motion.div 
             key={index} 
             variants={item}
-            whileHover={{ scale: 1.02, borderColor: 'var(--primary)', backgroundColor: 'rgba(20, 20, 23, 0.8)' }}
+            whileHover={{ scale: 1.02, borderColor: 'var(--primary)', backgroundColor: 'rgba(20, 20, 23, 0.9)' }}
             className={`bento-card ${emp.size || ''}`}
+            style={{ backdropFilter: 'blur(10px)' }}
           >
             <div style={{ color: 'var(--primary)', marginBottom: 'auto' }}>
               {emp.icon}
