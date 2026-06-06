@@ -1,57 +1,73 @@
-# ImmiBot - Immigration Support Chatbot
+# React + TypeScript + Vite
 
-ImmiBot is a mock immigration support company application featuring an AI-powered chatbot with strict guardrails. It specializes in US immigration support for F1, OPT, H1B, EAD, and visa transfers.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
-- **Guarded Chatbot:** Trained specifically on immigration topics; rejects out-of-scope questions.
-- **Smart Routing:** Automatically recommends the appropriate company contact based on user queries.
-- **Org Chart:** Displays the company's team and their respective roles.
-- **Mission Statement:** Clear focus on empowering students and professionals.
+Currently, two official plugins are available:
 
-## Tech Stack
-- **Frontend:** React (Vite), TypeScript, Vanilla CSS, React Router.
-- **Backend:** FastAPI (Python), Google GenAI (Gemini 2.0 Flash).
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Setup & Running
+## React Compiler
 
-### 1. Prerequisites
-- Node.js and npm
-- Python 3.x
-- Google Gemini API Key
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### 2. Backend Setup
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Create a `.env` file and add your API key:
-   ```bash
-   echo "GOOGLE_API_KEY=your_gemini_api_key_here" > .env
-   ```
-3. Activate the virtual environment:
-   ```bash
-   source venv/bin/activate
-   ```
-4. Run the FastAPI server:
-   ```bash
-   python main.py
-   ```
-   The backend will start at `http://localhost:8000`.
+## Expanding the ESLint configuration
 
-### 3. Frontend Setup
-1. Open a new terminal and navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-   The frontend will start at `http://localhost:5173`.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Deployment
-This is a prototype implementation. For production, ensure CORS settings in `main.py` are restricted and the `.env` file is properly managed.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
