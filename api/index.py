@@ -19,10 +19,6 @@ app.add_middleware(
 class ChatRequest(BaseModel):
     message: str
 
-@app.get("/")
-async def root():
-    return {"message": "ImmiBot API is running"}
-
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
     if not request.message:
