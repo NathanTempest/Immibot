@@ -18,9 +18,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
@@ -31,21 +29,19 @@ const item = {
 
 const OrgChart = () => {
   return (
-    <div className="org-page" style={{ position: 'relative' }}>
+    <div className="org-page">
       <img 
         src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
         className="page-bg-image" 
         alt="Office Background"
-        style={{ opacity: 0.1 }}
       />
-      <div className="grid-pattern"></div>
       
       <motion.header 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        style={{ marginBottom: '4rem', position: 'relative', zIndex: 1 }}
+        style={{ marginBottom: '4rem' }}
       >
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Our Leadership <span>& Team</span></h1>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>Our Leadership <span>& Team</span></h1>
         <p style={{ color: 'var(--text-dim)' }}>A collective of experts dedicated to your global mobility.</p>
       </motion.header>
 
@@ -54,15 +50,13 @@ const OrgChart = () => {
         initial="hidden"
         animate="show"
         className="org-bento"
-        style={{ position: 'relative', zIndex: 1 }}
       >
         {employees.map((emp, index) => (
           <motion.div 
             key={index} 
             variants={item}
-            whileHover={{ scale: 1.02, borderColor: 'var(--primary)', backgroundColor: 'rgba(20, 20, 23, 0.9)' }}
+            whileHover={{ scale: 1.02, borderColor: 'var(--primary)' }}
             className={`bento-card ${emp.size || ''}`}
-            style={{ backdropFilter: 'blur(10px)' }}
           >
             <div style={{ color: 'var(--primary)', marginBottom: 'auto' }}>
               {emp.icon}

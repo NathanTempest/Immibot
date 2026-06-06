@@ -31,7 +31,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
@@ -46,42 +46,36 @@ const Chatbot = () => {
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="chat-wrapper"
-      style={{ position: 'relative' }}
-    >
+    <div className="chat-wrapper">
       <img 
         src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" 
         className="page-bg-image" 
         alt="Tech Background"
-        style={{ opacity: 0.08 }}
       />
 
       {/* AI Pulse Background Animation */}
       <motion.div
         animate={{ 
           scale: [1, 1.2, 1],
-          opacity: [0.05, 0.1, 0.05]
+          opacity: [0.1, 0.2, 0.1]
         }}
         transition={{ duration: 4, repeat: Infinity }}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '400px',
-          height: '400px',
+          width: '600px',
+          height: '600px',
           background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)',
           borderRadius: '50%',
-          zIndex: -1
+          zIndex: 1
         }}
       ></motion.div>
 
-      <header style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <header style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1rem', position: 'relative', zIndex: 10 }}>
         <div>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem' }}>ImmiBot <span>Consultant</span></h1>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>ImmiBot <span>Consultant</span></h1>
           <p style={{ color: 'var(--text-dim)' }}>Specialized AI for US Immigration Law.</p>
         </div>
         <motion.div
@@ -93,7 +87,7 @@ const Chatbot = () => {
         </motion.div>
       </header>
 
-      <div className="chat-box" style={{ backdropFilter: 'blur(20px)', backgroundColor: 'rgba(20, 20, 23, 0.8)' }}>
+      <div className="chat-box" style={{ position: 'relative', zIndex: 10 }}>
         <div className="chat-messages">
           <AnimatePresence>
             {messages.map((msg, index) => (
@@ -129,7 +123,7 @@ const Chatbot = () => {
           <button className="btn" onClick={handleSend} disabled={isLoading}>Send</button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

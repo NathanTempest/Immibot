@@ -8,8 +8,10 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="app-container">
+      <div className="bg-system">
         <div className="bg-glow"></div>
+      </div>
+      <div className="content-wrapper">
         <nav>
           <div className="logo">ImmiBot</div>
           <div className="nav-links">
